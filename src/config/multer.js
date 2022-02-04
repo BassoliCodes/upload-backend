@@ -5,7 +5,7 @@ const crypto = require("crypto");
 const storageTypes = {
   local: multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, path.resolve(__dirname, "..", "..", "tmp", "uploads"));
+      cb(null, path.resolve(__dirname, "..", "..", "uploads"));
     },
     filename: (req, file, cb) => {
       crypto.randomBytes(16, (err, hash) => {
@@ -20,7 +20,7 @@ const storageTypes = {
 };
 
 module.exports = {
-  dest: path.resolve(__dirname, "..", "..", "tmp", "uploads"),
+  dest: path.resolve(__dirname, "..", "..", "uploads"),
   storage: storageTypes.local,
   limits: {
     fileSize: 100 * 1024 * 1024
